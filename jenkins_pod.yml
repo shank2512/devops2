@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myjenk1
+  labels:
+    env: production
+    region: IN
+spec:
+  containers:
+  - name: myjenkins-con
+    image: shanky25/jenkins_kube:v1
+    volumeMounts:
+      - name: jen-vol1
+        mountPath: /root/.jenkins/
+  volumes:
+  - name: jen-vol1
+    persistentVolumeClaim:
+      claimName: jenkins-pvc1 
+
+
+
